@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Divider from "./Divider";
 import { ReactComponent as Sent } from "../assets/icons/sent.svg";
 import { ReactComponent as Read } from "../assets/icons/read.svg";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ChatCard = ({
   image,
@@ -18,35 +18,34 @@ const ChatCard = ({
   isMuted,
 }) => {
   return (
-      <StyledLink>
-        <Container>
-          <Parted>
-            <Image width={60} height={60} src={image} alt="avatar" />
-            <TextContainer>
-              <Name>{name}</Name>
-              <Description>{description}</Description>
-              <LastMessage>{lastMessage}</LastMessage>
-              <Hashtag>{hashtag}</Hashtag>
-            </TextContainer>
-          </Parted>
+    <StyledLink to="/messenger">
+      <Container>
+        <Parted>
+          <Image width={60} height={60} src={image} alt="avatar" />
+          <TextContainer>
+            <Name>{name}</Name>
+            <Description>{description}</Description>
+            <LastMessage>{lastMessage}</LastMessage>
+            <Hashtag>{hashtag}</Hashtag>
+          </TextContainer>
+        </Parted>
 
-          <StatusContainer>
-            <Time>{time}</Time>
-            {/*TODO: Сложная тернарка, надо вытащить*/}
-            {newMessages ? (
-              <NewMessagesCounter isMuted={isMuted}>
-                {newMessages}
-              </NewMessagesCounter>
-            ) : isSent ? (
-              <Sent />
-            ) : isRead ? (
-              <Read />
-            ) : null}
-          </StatusContainer>
-        </Container>
-        <Divider />
-      </StyledLink>
-
+        <StatusContainer>
+          <Time>{time}</Time>
+          {/*TODO: Сложная тернарка, надо вытащить*/}
+          {newMessages ? (
+            <NewMessagesCounter isMuted={isMuted}>
+              {newMessages}
+            </NewMessagesCounter>
+          ) : isSent ? (
+            <Sent />
+          ) : isRead ? (
+            <Read />
+          ) : null}
+        </StatusContainer>
+      </Container>
+      <Divider />
+    </StyledLink>
   );
 };
 

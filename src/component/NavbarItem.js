@@ -1,21 +1,19 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-import {ReactComponent as settings} from "../assets/icons/settings-gear.svg";
-import {ReactComponent as chats} from "../assets/icons/chats.svg";
+import { Link } from "react-router-dom";
+import { ReactComponent as settings } from "../assets/icons/settings-gear.svg";
+import { ReactComponent as chats } from "../assets/icons/chats.svg";
 
-
-const NavbarItem = ({path, isActive, title}) => {
-    return (
-        <StyledLink to={path}>
-            <StyledNavbarItem>
-                {path === "/settings" && <Settings isActive={isActive}/>}
-                {path === "/chats" && <Chats isActive={isActive}/>}
-                <Title isActive={isActive}>{title}</Title>
-            </StyledNavbarItem>
-        </StyledLink>
-
-    );
+const NavbarItem = ({ path, isActive, title }) => {
+  return (
+    <StyledLink to={path}>
+      <StyledNavbarItem>
+        {path === "/settings" && <Settings isActive={isActive} />}
+        {path === "/chats" && <Chats isActive={isActive} />}
+        <Title isActive={isActive}>{title}</Title>
+      </StyledNavbarItem>
+    </StyledLink>
+  );
 };
 
 const StyledNavbarItem = styled.div`
@@ -28,7 +26,6 @@ const StyledNavbarItem = styled.div`
 
 const Title = styled.p`
   color: ${props => props.isActive ? "#007AFF" : "#8D8D8F"};
-  text-decoration: none;
   margin: 0;
 `
 

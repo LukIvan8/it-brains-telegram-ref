@@ -1,28 +1,35 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import NavbarItem from "./NavbarItem";
 
-const pageHeader = {settings:"Налаштування", chats:"Чати", messenger:"Сторінка чату"}
+const pageHeader = {
+  settings: "Налаштування",
+  chats: "Чати",
+  messenger: "Сторінка чату",
+};
 
-const Layout = ({children, page}) => {
-    return (
-        <React.Fragment>
-            <HeaderContainer>
-                <Header>
-                    <h1>{pageHeader[page]}</h1>
-                </Header>
-            </HeaderContainer>
+const Layout = ({ children, page }) => {
+  return (
+    <React.Fragment>
+      <HeaderContainer>
+        <Header>
+          <h1>{pageHeader[page]}</h1>
+        </Header>
+      </HeaderContainer>
 
-            <div>{children}</div>
-            <NavbarContainer>
-                <Navbar>
-                    <NavbarItem path="/settings" isActive={page === "settings"} title="Settings"/>
-                    <NavbarItem path="/chats" isActive={page === "chats"} title="Chats"/>
-                </Navbar>
-            </NavbarContainer>
-
-        </React.Fragment>
-    );
+      <div>{children}</div>
+      <NavbarContainer>
+        <Navbar>
+          <NavbarItem
+            path="/settings"
+            isActive={page === "settings"}
+            title="Settings"
+          />
+          <NavbarItem path="/chats" isActive={page === "chats"} title="Chats" />
+        </Navbar>
+      </NavbarContainer>
+    </React.Fragment>
+  );
 };
 
 //Так как хэдер фиксированный нам нужен для него контейнер который будет занимать его пространство
@@ -52,7 +59,7 @@ const Header = styled.div`
 //То же что и в Header
 const NavbarContainer = styled.div`
   height: 90px;
-`
+`;
 
 const Navbar = styled.div`
   //Фиксация на странице
@@ -68,14 +75,14 @@ const Navbar = styled.div`
 
   //Стили
   height: 90px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-top: 1px solid rgba(60, 60, 67, 0.29);
-  padding:10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   //Для создания вида мобильного телефона
   max-width: 375px;
   margin: 0 auto;
 `;
-
 
 export default Layout;
