@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Chats from './Chats';
 import Settings from './Settings';
 import Messenger from './Messenger';
-import "./styles.css"
 
 export default function App() {
     return (

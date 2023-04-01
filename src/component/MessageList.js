@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Message from "./Message";
 import send from "../assets/icons/send.svg";
@@ -15,12 +15,19 @@ const MessageList = ({ list }) => {
         <List>
           {messages.map((msg) => {
             return (
-              <Message key={list.indexOf(msg)} text={msg.text} time={msg.time} isYou={msg.isYou}></Message>
+              <Message
+                key={list.indexOf(msg)}
+                text={msg.text}
+                time={msg.time}
+                isYou={msg.isYou}
+              ></Message>
             );
           })}
         </List>
       )}
-      <MessageInput setMessages={setMessages} messages={messages} />
+      <EmptyDiv>
+        <MessageInput setMessages={setMessages} messages={messages} />
+      </EmptyDiv>
     </div>
   );
 };
@@ -44,7 +51,6 @@ const MessageInput = ({ setMessages, messages }) => {
             console.log(messages);
             setValue("");
           }
-
         }}
         width={32}
         height={32}
@@ -55,13 +61,17 @@ const MessageInput = ({ setMessages, messages }) => {
   );
 };
 
+const EmptyDiv = styled.div`
+  height: 60px;
+`;
+
 const InputContainer = styled.div`
   background-color: #f6f6f6;
-  width: 95%;
+  width: 375px;
+  height: 60px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  padding: 10px;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -70,6 +80,7 @@ const InputContainer = styled.div`
   right: 0;
   gap: 10px;
 `;
+
 const Input = styled.input`
   width: 75%;
   border-radius: 30px;
@@ -78,6 +89,7 @@ const Input = styled.input`
   padding: 10px;
   font-size: 14px;
 `;
+
 const Image = styled.img`
   cursor: pointer;
 `;

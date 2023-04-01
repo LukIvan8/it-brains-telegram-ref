@@ -58,7 +58,7 @@ const Header = styled.div`
 
 //То же что и в Header
 const NavbarContainer = styled.div`
-  height: 90px;
+  height: 110px;
 `;
 
 const Navbar = styled.div`
@@ -74,11 +74,10 @@ const Navbar = styled.div`
   align-items: center;
 
   //Стили
-  height: 90px;
+  height: 110px;
   background-color: #f6f6f6;
   border-top: 1px solid rgba(60, 60, 67, 0.29);
-  padding-top: 10px;
-  padding-bottom: 10px;
+
 
   //Для создания вида мобильного телефона
   max-width: 375px;

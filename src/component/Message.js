@@ -13,14 +13,14 @@ const Message = ({ text, time, isYou }) => {
 const StyledMessage = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: end;
   padding: 15px;
   width: fit-content;
   max-width: 70%;
-  align-self: ${props => props.isYou ? "flex-end" : "flex-start"};
-  background: ${props => props.isYou ? "#E1FEC6" : "#fff"};
+  align-self: ${(props) => (props.isYou ? "flex-end" : "flex-start")};
+  background: ${(props) => (props.isYou ? "#E1FEC6" : "#fff")};
   border-radius: 15px;
+  overflow: clip;
 `;
 
 const Time = styled.p`
