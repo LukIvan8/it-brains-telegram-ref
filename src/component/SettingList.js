@@ -21,9 +21,6 @@ const List = styled.div`
 
   border-top: solid #3C3C434A 0.1px;
   border-bottom: solid #3C3C434A 0.1px;
-
-
-
 `
 
 export default SettingList;

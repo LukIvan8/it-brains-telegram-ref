@@ -40,6 +40,7 @@ const Header = styled.div`
   font-size: 10px;
   position: fixed;
   background-color: #F6F6F6;
+  border-bottom: 1px solid rgba(60, 60, 67, 0.29) ;
   top: 0;
   left: 0;
   right: 0;
@@ -68,7 +69,7 @@ const Navbar = styled.div`
   //Стили
   height: 90px;
   background-color: #F6F6F6;
-  border-top: 0.33px solid rgba(60, 60, 67, 0.29);
+  border-top: 1px solid rgba(60, 60, 67, 0.29);
   padding:10px;
 
   //Для создания вида мобильного телефона
