@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "./component/Layout";
 import ChatList from "./component/ChatList";
 import cat from "./assets/image/cat.jpg";
 import pc from "./assets/image/pc.jpg";
+import styled from "styled-components";
 
 const CHAT_LIST = [
   {
@@ -12,9 +13,9 @@ const CHAT_LIST = [
     lastMessage: "meow meow meow",
     time: "10:00",
     description: "kotik",
-    hashtag:"#catforeva",
+    hashtag: "#catforeva",
     newMessages: "23",
-    isMuted:true
+    isMuted: false,
   },
   {
     key: 2,
@@ -24,15 +25,72 @@ const CHAT_LIST = [
     time: "19:12",
     newMessages: "",
     isSent: true,
-  }
+  },
 ];
 
-const Chats = () => {
+export default function Chats() {
+  const [searchValue, setSearchValue] = useState("");
+  const [chatList, setChatList] = useState(CHAT_LIST);
+
+  useEffect(() => {
+    setChatList(search(searchValue, CHAT_LIST));
+  }, [searchValue]);
+
   return (
     <Layout page="chats">
-      <ChatList list={CHAT_LIST} />
+      <EmptyDiv>
+        <InputContainer>
+          <Input
+            value={searchValue}
+            placeholder="Введіть ваше повідомлення"
+            onChange={(event) => setSearchValue(event.target.value)}
+          />
+        </InputContainer>
+      </EmptyDiv>
+      <ChatList list={chatList} />
     </Layout>
   );
-};
+}
 
-export default Chats;
+function search(value, list) {
+  if (value === "") {
+    return list;
+  }
+  value = value.toUpperCase();
+  const newList = [];
+  for (let i = 0; i < list.length; i++) {
+    const txtValue = list[i]["name"];
+    const filtered = txtValue.toUpperCase().indexOf(value) <= -1;
+    newList.push({ ...list[i], filtered });
+  }
+  return newList;
+}
+
+const Input = styled.input`
+  width: 75%;
+  border-radius: 30px;
+  box-shadow: none;
+  border: 1px #d1d1d6 solid;
+  padding: 10px;
+  font-size: 14px;
+`;
+
+const EmptyDiv = styled.div`
+  height: 60px;
+`;
+
+const InputContainer = styled.div`
+  background-color: #f6f6f6;
+  width: 375px;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  gap: 10px;
+`;

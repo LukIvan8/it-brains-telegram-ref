@@ -1,10 +1,8 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
-const Divider = () => {
-    return (
-        <StyledDivider/>
-    );
+export default function Divider() {
+  return <StyledDivider />;
 };
 
 const StyledDivider = styled.hr`
@@ -15,4 +13,3 @@ const StyledDivider = styled.hr`
   margin: 0 auto;
 `
 
-export default Divider;

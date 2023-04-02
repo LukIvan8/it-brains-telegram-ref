@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import NavbarItem from "./NavbarItem";
+import { ReactComponent as settings } from "../assets/icons/settings-gear.svg";
+import { ReactComponent as chats } from "../assets/icons/chats.svg";
+import { Link } from "react-router-dom";
 
 const pageHeader = {
   settings: "Налаштування",
@@ -8,7 +10,7 @@ const pageHeader = {
   messenger: "Сторінка чату",
 };
 
-const Layout = ({ children, page }) => {
+export default function Layout({ children, page }) {
   return (
     <React.Fragment>
       <HeaderContainer>
@@ -30,13 +32,49 @@ const Layout = ({ children, page }) => {
       </NavbarContainer>
     </React.Fragment>
   );
+}
+
+const NavbarItem = ({ path, isActive, title }) => {
+  return (
+    <StyledLink to={path}>
+      <StyledNavbarItem>
+        {path === "/settings" && <Settings isActive={isActive} />}
+        {path === "/chats" && <Chats isActive={isActive} />}
+        <Title isActive={isActive}>{title}</Title>
+      </StyledNavbarItem>
+    </StyledLink>
+  );
 };
+
+const StyledNavbarItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 95px;
+`;
+
+const Title = styled.p`
+  color: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
+  margin: 0;
+`;
+
+const Settings = styled(settings)`
+  fill: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
+`;
+
+const Chats = styled(chats)`
+  fill: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 
 //Так как хэдер фиксированный нам нужен для него контейнер который будет занимать его пространство
 const HeaderContainer = styled.div`
   height: 70px;
-`
-
+`;
 
 const Header = styled.div`
   display: flex;
@@ -46,8 +84,8 @@ const Header = styled.div`
   font-weight: bold;
   font-size: 10px;
   position: fixed;
-  background-color: #F6F6F6;
-  border-bottom: 1px solid rgba(60, 60, 67, 0.29) ;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid rgba(60, 60, 67, 0.29);
   top: 0;
   left: 0;
   right: 0;
@@ -84,4 +122,3 @@ const Navbar = styled.div`
   margin: 0 auto;
 `;
 
-export default Layout;

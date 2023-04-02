@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Message from "./Message";
 import send from "../assets/icons/send.svg";
 
-const MessageList = ({ list }) => {
+export default function MessageList({ list }) {
   const [messages, setMessages] = useState(list);
 
   return (
@@ -30,9 +30,19 @@ const MessageList = ({ list }) => {
       </EmptyDiv>
     </div>
   );
-};
+}
 
-const MessageInput = ({ setMessages, messages }) => {
+function handleClick(messages, setMessages, value, setValue) {
+  if (value === "") {
+    return;
+  }
+  let currentMessages = messages.slice();
+  currentMessages.push({ text: value, isYou: true, time: "10:00" });
+  setMessages(currentMessages);
+  setValue("");
+}
+
+function MessageInput({ setMessages, messages }) {
   const [value, setValue] = useState("");
   return (
     <InputContainer>
@@ -43,14 +53,7 @@ const MessageInput = ({ setMessages, messages }) => {
       />
       <Image
         onClick={() => {
-          if (value !== "") {
-            let currentMessages = messages.slice();
-            currentMessages.push({ text: value, isYou: true, time: "10:00" });
-            setMessages(currentMessages);
-            console.log(value);
-            console.log(messages);
-            setValue("");
-          }
+          handleClick(messages, setMessages, value, setValue);
         }}
         width={32}
         height={32}
@@ -59,8 +62,23 @@ const MessageInput = ({ setMessages, messages }) => {
       />
     </InputContainer>
   );
-};
+}
 
+//List styles
+const EmptyListMessage = styled.p`
+  text-align: center;
+  font-size: 17px;
+`;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 15px;
+  padding: 15px;
+`;
+
+//Input styles
 const EmptyDiv = styled.div`
   height: 60px;
 `;
@@ -94,17 +112,4 @@ const Image = styled.img`
   cursor: pointer;
 `;
 
-const EmptyListMessage = styled.p`
-  text-align: center;
-  font-size: 17px;
-`;
 
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  gap: 15px;
-  padding: 15px;
-`;
-
-export default MessageList;

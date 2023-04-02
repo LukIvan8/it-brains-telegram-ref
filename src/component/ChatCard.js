@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-import Divider from "./Divider";
-import { ReactComponent as Sent } from "../assets/icons/sent.svg";
 import { ReactComponent as Read } from "../assets/icons/read.svg";
+import { ReactComponent as Sent } from "../assets/icons/sent.svg";
+import Divider from "./Divider";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const ChatCard = ({
+export default function ChatCard({
   image,
   name,
   lastMessage,
@@ -16,45 +16,49 @@ const ChatCard = ({
   isSent,
   isRead,
   isMuted,
-}) => {
+  filtered,
+}) {
   return (
     <StyledLink to="/messenger">
-      <Container>
-        <Parted>
-          <Image width={60} height={60} src={image} alt="avatar" />
-          <TextContainer>
-            <Name>{name}</Name>
-            <Description>{description}</Description>
-            <LastMessage>{lastMessage}</LastMessage>
-            <Hashtag>{hashtag}</Hashtag>
-          </TextContainer>
-        </Parted>
-
-        <StatusContainer>
-          <Time>{time}</Time>
-          {/*TODO: Сложная тернарка, надо вытащить*/}
-          {newMessages ? (
-            <NewMessagesCounter isMuted={isMuted}>
-              {newMessages}
-            </NewMessagesCounter>
-          ) : isSent ? (
-            <Sent />
-          ) : isRead ? (
-            <Read />
-          ) : null}
-        </StatusContainer>
-      </Container>
+      <CardContainer filtered={filtered}>
+          <Parted>
+            <Image width={60} height={60} src={image} alt="avatar" />
+            <TextContainer>
+              <Name>{name}</Name>
+              <Description>{description}</Description>
+              <LastMessage>{lastMessage}</LastMessage>
+              <Hashtag>{hashtag}</Hashtag>
+            </TextContainer>
+          </Parted>
+          <StatusContainer>
+            <Time>{time}</Time>
+            {displayStatus(newMessages, isSent, isRead, isMuted)}
+          </StatusContainer>
+      </CardContainer>
       <Divider />
     </StyledLink>
-  );
-};
+
+);
+}
+
+function displayStatus(newMessages, isSent, isRead, isMuted) {
+  if (newMessages) {
+    return (
+      <NewMessagesCounter isMuted={isMuted}>{newMessages}</NewMessagesCounter>
+    );
+  } else if (isRead) {
+    return <Read />;
+  } else if (isSent) {
+    return <Sent />;
+  }
+}
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-`
+`;
 
-const Container = styled.div`
-  display: flex;
+const CardContainer = styled.div`
+  display: ${props => props.filtered ? "none" : "flex"};
   flex-direction: row;
   width: 90%;
   margin: 0 auto;
@@ -63,7 +67,8 @@ const Container = styled.div`
   align-items: start;
   background-color: #fff;
   padding: 15px;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
   }
 `;
@@ -138,5 +143,3 @@ const NewMessagesCounter = styled.p`
   padding-right: 5px;
   border-radius: 20px;
 `;
-
-export default ChatCard;

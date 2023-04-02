@@ -11,14 +11,13 @@ const MESSAGE_LIST = [
   },
 ];
 
-const Messenger = () => {
+export default function Messenger() {
   return (
     <Layout page="messenger">
-      <MessageList list={MESSAGE_LIST} />
+      <MessageList list={MESSAGE_LIST}/>
     </Layout>
   );
 };
 
 
 
-export default Messenger;
