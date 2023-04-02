@@ -19,6 +19,18 @@ export default function ChatCard({
   isRead,
   isMuted,
 }) {
+  function status(){
+    if (newMessages) {
+      return (
+        <NewMessagesCounter isMuted={isMuted}>{newMessages}</NewMessagesCounter>
+      );
+    } else if (isRead) {
+      return <Read />;
+    } else if (isSent) {
+      return <Sent />;
+    }
+  }
+
   return (
     <StyledLink to="/messenger">
       <CardContainer>
@@ -33,7 +45,7 @@ export default function ChatCard({
         </Parted>
         <StatusContainer>
           <Time>{time}</Time>
-          {displayStatus(newMessages, isSent, isRead, isMuted)}
+          {status()}
         </StatusContainer>
       </CardContainer>
       <Divider />
@@ -41,17 +53,6 @@ export default function ChatCard({
   );
 }
 
-function displayStatus(newMessages, isSent, isRead, isMuted) {
-  if (newMessages) {
-    return (
-      <NewMessagesCounter isMuted={isMuted}>{newMessages}</NewMessagesCounter>
-    );
-  } else if (isRead) {
-    return <Read />;
-  } else if (isSent) {
-    return <Sent />;
-  }
-}
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -140,7 +141,13 @@ const NewMessagesCounter = styled.p`
   font-weight: 400;
   color: #fff;
   font-size: 14px;
-  background-color: ${(props) => (props.isMuted ? "#AEAEB2" : "#037EE5")};
+  background-color: ${({ isMuted }) => {
+    if (isMuted) {
+      return "#8e8e93";
+    } else {
+      return "#037ee5";
+    }
+  }};
   //Когда добавят paddingX и paddingY...
   padding-left: 5px;
   padding-right: 5px;

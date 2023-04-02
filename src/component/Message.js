@@ -26,9 +26,22 @@ const StyledMessage = styled.div`
   align-items: end;
   padding: 15px;
   max-width: 70%;
-  align-self: ${(props) => (props.isYou ? "flex-end" : "flex-start")};
-  background: ${(props) =>
-          props.isYou ? "#E1FEC6" : props.hasBackground ? "#00FF57" : "#fff"};
+  align-self: ${({ isYou }) => {
+    if (isYou) {
+      return "flex-end";
+    } else {
+      return "flex-start";
+    }
+  }};
+  background: ${({ isYou, hasBackground }) => {
+    if (isYou) {
+      return "#E1FEC6";
+    } else if (hasBackground) {
+      return "#00FF57";
+    } else {
+      return "#fff";
+    }
+  }};
   border-radius: 15px;
   overflow: hidden;
 `;
@@ -44,11 +57,20 @@ const Text = styled.p`
   padding-right: 12px;
   font-weight: 400;
   margin: 0;
-  color: ${(props) => (props.isBlue ? "#007aff" : "black")};
-  text-decoration: ${(props) =>
-          props.isUnderline
-                  ? "underline"
-                  : props.isCrossed
-                          ? "line-through"
-                          : "none"};
+  color: ${({ isBlue }) => {
+    if (isBlue) {
+      return "#007aff";
+    } else {
+      return "black";
+    }
+  }};
+  text-decoration: ${({ isUnderline, isCrossed }) => {
+    if (isUnderline) {
+      return "underline";
+    } else if (isCrossed) {
+      return "line-through";
+    } else {
+      return "none";
+    }
+  }};
 `;

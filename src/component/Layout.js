@@ -65,17 +65,34 @@ const StyledLink = styled(Link)`
 `;
 
 const Title = styled.p`
-  color: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
+  color: ${({ isActive }) => {
+    if (isActive) {
+      return "#007AFF";
+    }
+    return "#8D8D8F";
+  }};
   margin: 0;
 `;
 
 //Стили иконок
 const Settings = styled(settings)`
-  fill: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
+  fill: ${({ isActive }) => {
+    if (isActive) {
+      return "#007AFF";
+    } else {
+      return "#8D8D8F";
+    }
+  }};
 `;
 
 const Chats = styled(chats)`
-  fill: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
+  fill: ${({ isActive }) => {
+    if (isActive) {
+      return "#007AFF";
+    } else {
+      return "#8D8D8F";
+    }
+  }};
 `;
 
 
