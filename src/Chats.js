@@ -57,13 +57,10 @@ function search(value, list) {
     return list;
   }
   value = value.toUpperCase();
-  const newList = [];
-  for (let i = 0; i < list.length; i++) {
-    const txtValue = list[i]["name"];
-    const filtered = txtValue.toUpperCase().indexOf(value) <= -1;
-    newList.push({ ...list[i], filtered });
-  }
-  return newList;
+  return list.filter((item) => {
+    const txtValue = item["name"];
+    return txtValue.toUpperCase().indexOf(value) > -1;
+  });
 }
 
 const Input = styled.input`
