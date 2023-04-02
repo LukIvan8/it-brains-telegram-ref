@@ -1,8 +1,13 @@
+//Импорт библиотек
 import React from "react";
 import styled from "styled-components";
+
+//Импорт компонентов
+import { Link } from "react-router-dom";
+
+//Импорт иконок
 import { ReactComponent as settings } from "../assets/icons/settings-gear.svg";
 import { ReactComponent as chats } from "../assets/icons/chats.svg";
-import { Link } from "react-router-dom";
 
 const pageHeader = {
   settings: "Налаштування",
@@ -10,7 +15,7 @@ const pageHeader = {
   messenger: "Сторінка чату",
 };
 
-export default function Layout({ children, page }) {
+export default function Layout({children, page}) {
   return (
     <React.Fragment>
       <HeaderContainer>
@@ -46,6 +51,7 @@ const NavbarItem = ({ path, isActive, title }) => {
   );
 };
 
+// Стиль итема
 const StyledNavbarItem = styled.div`
   display: flex;
   justify-content: center;
@@ -54,11 +60,16 @@ const StyledNavbarItem = styled.div`
   width: 95px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const Title = styled.p`
   color: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
   margin: 0;
 `;
 
+//Стили иконок
 const Settings = styled(settings)`
   fill: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
 `;
@@ -67,9 +78,6 @@ const Chats = styled(chats)`
   fill: ${(props) => (props.isActive ? "#007AFF" : "#8D8D8F")};
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
 
 //Так как хэдер фиксированный нам нужен для него контейнер который будет занимать его пространство
 const HeaderContainer = styled.div`

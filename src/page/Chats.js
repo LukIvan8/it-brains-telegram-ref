@@ -1,9 +1,12 @@
+//Импорт библиотек
 import React, { useEffect, useState } from "react";
-import Layout from "./component/Layout";
-import ChatList from "./component/ChatList";
-import cat from "./assets/image/cat.jpg";
-import pc from "./assets/image/pc.jpg";
 import styled from "styled-components";
+//Импорт компонентов
+import Layout from "../component/Layout";
+import ChatList from "../component/ChatList";
+//Импорт картинок
+import cat from "../assets/image/cat.jpg";
+import pc from "../assets/image/pc.jpg";
 
 const CHAT_LIST = [
   {

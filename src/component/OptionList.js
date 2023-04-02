@@ -1,5 +1,7 @@
+// Импорт библиотек
 import React from "react";
 import styled from "styled-components";
+// Импорт компонентов
 import Divider from "./Divider";
 
 export default function OptionList({ settingList }) {

@@ -1,6 +1,9 @@
+//Импорт библиотек
 import React, { useState } from "react";
 import styled from "styled-components";
+//Импорт компонентов
 import Message from "./Message";
+//Импорт иконки
 import send from "../assets/icons/send.svg";
 
 export default function MessageList({ list }) {
@@ -14,12 +17,7 @@ export default function MessageList({ list }) {
       {list[0] && (
         <List>
           {messages.map((msg) => {
-            return (
-              <Message
-                key={list.indexOf(msg)}
-                {...msg}
-              ></Message>
-            );
+            return <Message key={list.indexOf(msg)} {...msg}></Message>;
           })}
         </List>
       )}

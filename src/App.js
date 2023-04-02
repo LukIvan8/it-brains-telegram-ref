@@ -1,26 +1,26 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
-
-import styled from 'styled-components';
-import Chats from './Chats';
-import Settings from './Settings';
-import Messenger from './Messenger';
+//Импорт библиотек
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+//Импорт компонентов
+import Chats from "./page/Chats";
+import Settings from "./page/Settings";
+import Messenger from "./page/Messenger";
 
 export default function App() {
-    return (
-        <Container>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/chats" element={<Chats/>}/>
-                    <Route path="/settings" element={<Settings/>}/>
-                    <Route path="/messenger" element={<Messenger/>}/>
-                </Routes>
-            </BrowserRouter>
-        </Container>
-
-    );
+  return (
+    <AppContainer>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/chats" element={<Chats />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/messenger" element={<Messenger />} />
+        </Routes>
+      </BrowserRouter>
+    </AppContainer>
+  );
 }
 
-const Container = styled.div`
+const AppContainer = styled.div`
   max-width: 375px;
   margin: 0 auto;
 `;

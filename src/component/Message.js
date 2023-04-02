@@ -1,3 +1,4 @@
+//Импорт библиотек
 import styled from "styled-components";
 
 export default function Message({
@@ -29,7 +30,7 @@ const StyledMessage = styled.div`
   max-width: 70%;
   align-self: ${(props) => (props.isYou ? "flex-end" : "flex-start")};
   background: ${(props) =>
-    props.isYou ? "#E1FEC6" : props.hasBackground ? "#00FF57" : "#fff"};
+          props.isYou ? "#E1FEC6" : props.hasBackground ? "#00FF57" : "#fff"};
 
   border-radius: 15px;
   overflow: clip;
@@ -48,9 +49,9 @@ const Text = styled.p`
   margin: 0;
   color: ${(props) => (props.isBlue ? "#007aff" : "black")};
   text-decoration: ${(props) =>
-    props.isUnderline
-      ? "underline"
-      : props.isCrossed
-      ? "line-through"
-      : "none"};
+          props.isUnderline
+                  ? "underline"
+                  : props.isCrossed
+                          ? "line-through"
+                          : "none"};
 `;

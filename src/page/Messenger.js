@@ -1,6 +1,6 @@
-import React from "react";
-import Layout from "./component/Layout";
-import MessageList from "./component/MessageList";
+// Импорт компонентов
+import Layout from "../component/Layout";
+import MessageList from "../component/MessageList";
 
 const MESSAGE_LIST = [
   { text: "Hello!", time: "10:00", isYou: false },

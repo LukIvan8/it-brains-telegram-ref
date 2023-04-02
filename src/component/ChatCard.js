@@ -1,9 +1,11 @@
-import React from "react";
+//Импорт библиотек
+import styled from "styled-components";
+//Импорт компонентов
+import Divider from "./Divider";
+import { Link } from "react-router-dom";
+//Импорт иконок
 import { ReactComponent as Read } from "../assets/icons/read.svg";
 import { ReactComponent as Sent } from "../assets/icons/sent.svg";
-import Divider from "./Divider";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export default function ChatCard({
   image,
@@ -21,24 +23,23 @@ export default function ChatCard({
   return (
     <StyledLink to="/messenger">
       <CardContainer filtered={filtered}>
-          <Parted>
-            <Image width={60} height={60} src={image} alt="avatar" />
-            <TextContainer>
-              <Name>{name}</Name>
-              <Description>{description}</Description>
-              <LastMessage>{lastMessage}</LastMessage>
-              <Hashtag>{hashtag}</Hashtag>
-            </TextContainer>
-          </Parted>
-          <StatusContainer>
-            <Time>{time}</Time>
-            {displayStatus(newMessages, isSent, isRead, isMuted)}
-          </StatusContainer>
+        <Parted>
+          <Image width={60} height={60} src={image} alt="avatar" />
+          <TextContainer>
+            <Name>{name}</Name>
+            <Description>{description}</Description>
+            <LastMessage>{lastMessage}</LastMessage>
+            <Hashtag>{hashtag}</Hashtag>
+          </TextContainer>
+        </Parted>
+        <StatusContainer>
+          <Time>{time}</Time>
+          {displayStatus(newMessages, isSent, isRead, isMuted)}
+        </StatusContainer>
       </CardContainer>
       <Divider />
     </StyledLink>
-
-);
+  );
 }
 
 function displayStatus(newMessages, isSent, isRead, isMuted) {

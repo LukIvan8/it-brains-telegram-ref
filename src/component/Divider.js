@@ -1,4 +1,4 @@
-import React from "react";
+//Импорт библиотек
 import styled from "styled-components";
 
 export default function Divider() {
