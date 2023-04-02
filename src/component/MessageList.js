@@ -1,5 +1,5 @@
 //Импорт библиотек
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 //Импорт компонентов
 import Message from "./Message";
@@ -9,18 +9,27 @@ import send from "../assets/icons/send.svg";
 export default function MessageList({ list }) {
   const [messages, setMessages] = useState(list);
 
+  if (!list.length) {
+    return <EmptyListMessage>Список повідомлень пустий</EmptyListMessage>;
+  }
   return (
     <div>
-      {!list[0] && (
-        <EmptyListMessage>Список повідомлень пустий</EmptyListMessage>
-      )}
-      {list[0] && (
-        <List>
-          {messages.map((msg) => {
-            return <Message key={list.indexOf(msg)} {...msg}></Message>;
-          })}
-        </List>
-      )}
+      <List>
+        {messages.map((msg) => {
+          return (
+            <Message
+              key={list.indexOf(msg)}
+              text={msg.text}
+              hasBackground={msg.hasBackground}
+              isYou={msg.isYou}
+              time={msg.time}
+              isBlue={msg.isBlue}
+              isUnderline={msg.isUnderline}
+              isCrossed={msg.isCrossed}
+            />
+          );
+        })}
+      </List>
       <EmptyDiv>
         <MessageInput setMessages={setMessages} messages={messages} />
       </EmptyDiv>
@@ -60,7 +69,6 @@ function MessageInput({ setMessages, messages }) {
   );
 }
 
-//List styles
 const EmptyListMessage = styled.p`
   text-align: center;
   font-size: 17px;
@@ -69,30 +77,28 @@ const EmptyListMessage = styled.p`
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
   gap: 15px;
+  width: 90%;
   padding: 15px;
 `;
 
-//Input styles
 const EmptyDiv = styled.div`
   height: 60px;
 `;
 
 const InputContainer = styled.div`
   background-color: #f6f6f6;
-  width: 375px;
   height: 60px;
+  width: 375px;
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   position: fixed;
   bottom: 110px;
   left: 0;
   right: 0;
-  gap: 10px;
 `;
 
 const Input = styled.input`
