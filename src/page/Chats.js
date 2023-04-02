@@ -7,6 +7,7 @@ import ChatList from "../component/ChatList";
 //Импорт картинок
 import cat from "../assets/image/cat.jpg";
 import pc from "../assets/image/pc.jpg";
+import Input from "../component/Input";
 
 const CHAT_LIST = [
   {
@@ -66,14 +67,6 @@ function search(value, list) {
   });
 }
 
-const Input = styled.input`
-  width: 75%;
-  border-radius: 30px;
-  box-shadow: none;
-  border: 1px #d1d1d6 solid;
-  padding: 10px;
-  font-size: 14px;
-`;
 
 const EmptyDiv = styled.div`
   height: 60px;

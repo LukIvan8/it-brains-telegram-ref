@@ -1,9 +1,11 @@
 // Импорт компонентов
 import Layout from "../component/Layout";
 import MessageList from "../component/MessageList";
+import {useState} from "react";
+import MessageInput from "../component/MessageInput";
 
 const MESSAGE_LIST = [
-  { text: "Hello!", time: "10:00", isYou: false },
+  {text: "Hello!", time: "10:00", isYou: false},
   {
     text: "You can write here and message will appear! Right now only from one side(",
     time: "10:00",
@@ -47,13 +49,17 @@ const MESSAGE_LIST = [
   },
 ];
 
-export default function Messenger() {
+export default function Dialog() {
+  const [messages, setMessages] = useState(MESSAGE_LIST);
+
   return (
     <Layout page="messenger">
-      <MessageList list={MESSAGE_LIST}/>
+      <MessageList list={messages} />
+      <MessageInput setMessages={setMessages} messages={messages} />
     </Layout>
   );
-};
+}
+
 
 
 

@@ -4,7 +4,7 @@ import styled from "styled-components";
 //Импорт компонентов
 import Chats from "./page/Chats";
 import Settings from "./page/Settings";
-import Messenger from "./page/Messenger";
+import Dialog from "./page/Dialog";
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/chats" element={<Chats />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/messenger" element={<Messenger />} />
+          <Route path="/messenger" element={<Dialog />} />
         </Routes>
       </BrowserRouter>
     </AppContainer>
