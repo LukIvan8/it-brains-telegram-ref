@@ -17,9 +17,7 @@ export default function MessageList({ list }) {
             return (
               <Message
                 key={list.indexOf(msg)}
-                text={msg.text}
-                time={msg.time}
-                isYou={msg.isYou}
+                {...msg}
               ></Message>
             );
           })}

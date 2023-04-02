@@ -9,6 +9,42 @@ const MESSAGE_LIST = [
     time: "10:00",
     isYou: false,
   },
+  {
+    text: "Hello!",
+    time: "11:00",
+    isYou: false,
+    isUnderline: true,
+    isCrossed: false,
+    isBlue: false,
+    hasBackground: false,
+  },
+  {
+    text: "Hello!",
+    time: "12:00",
+    isYou: false,
+    isUnderline: false,
+    isCrossed: true,
+    isBlue: false,
+    hasBackground: false,
+  },
+  {
+    text: "Hello!",
+    time: "13:00",
+    isYou: false,
+    isUnderline: false,
+    isCrossed: false,
+    isBlue: true,
+    hasBackground: false,
+  },
+  {
+    text: "Hello!",
+    time: "14:00",
+    isYou: false,
+    isUnderline: false,
+    isCrossed: false,
+    isBlue: false,
+    hasBackground: true,
+  },
 ];
 
 export default function Messenger() {
