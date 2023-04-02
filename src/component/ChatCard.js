@@ -19,18 +19,6 @@ export default function ChatCard({
   isRead,
   isMuted,
 }) {
-  function status(){
-    if (newMessages) {
-      return (
-        <NewMessagesCounter isMuted={isMuted}>{newMessages}</NewMessagesCounter>
-      );
-    } else if (isRead) {
-      return <Read />;
-    } else if (isSent) {
-      return <Sent />;
-    }
-  }
-
   return (
     <StyledLink to="/dialog">
       <CardContainer>
@@ -45,7 +33,12 @@ export default function ChatCard({
         </Parted>
         <StatusContainer>
           <Time>{time}</Time>
-          {status()}
+          <Status
+            isMuted={isMuted}
+            isRead={isRead}
+            isSent={isSent}
+            newMessages={newMessages}
+          />
         </StatusContainer>
       </CardContainer>
       <Divider />
@@ -53,6 +46,17 @@ export default function ChatCard({
   );
 }
 
+function Status({ isMuted, isRead, isSent, newMessages }) {
+  if (newMessages) {
+    return (
+      <NewMessagesCounter isMuted={isMuted}>{newMessages}</NewMessagesCounter>
+    );
+  } else if (isRead) {
+    return <Read />;
+  } else if (isSent) {
+    return <Sent />;
+  }
+}
 
 const StyledLink = styled(Link)`
   text-decoration: none;

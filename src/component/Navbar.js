@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-import {ReactComponent as settings} from "../assets/icons/settings-gear.svg";
-import {ReactComponent as chats} from "../assets/icons/chats.svg";
+import { Link } from "react-router-dom";
+import { ReactComponent as Settings } from "../assets/icons/settings-gear.svg";
+import { ReactComponent as Chats } from "../assets/icons/chats.svg";
 
-const Navbar = ({page}) => {
+const Navbar = ({ page }) => {
   return (
     <NavbarContainer>
       <ItemsContainer>
@@ -23,8 +23,11 @@ const NavbarItem = ({ path, isActive, title }) => {
   return (
     <StyledLink to={path}>
       <StyledNavbarItem>
-        {path === "/settings" && <Settings isActive={isActive} />}
-        {path === "/chats" && <Chats isActive={isActive} />}
+        <IconWrapper isActive={isActive}>
+          {path === "/settings" && <Settings  />}
+          {path === "/chats" && <Chats />}
+        </IconWrapper>
+
         <Title isActive={isActive}>{title}</Title>
       </StyledNavbarItem>
     </StyledLink>
@@ -46,37 +49,27 @@ const StyledLink = styled(Link)`
 
 const Title = styled.p`
   color: ${({ isActive }) => {
-  if (isActive) {
-    return "#007AFF";
-  }
-  return "#8D8D8F";
-}};
+    if (isActive) {
+      return "#007AFF";
+    }
+    return "#8D8D8F";
+  }};
   margin: 0;
 `;
 
 //Стили иконок
-const Settings = styled(settings)`
-  fill: ${({ isActive }) => {
-  if (isActive) {
-    return "#007AFF";
-  } else {
-    return "#8D8D8F";
+const IconWrapper = styled.div`
+  & > * {
+    fill: ${({isActive}) => {
+      if (isActive) {
+        return "#007AFF";
+      } else {
+        return "#8D8D8F";
+      }
+    }};
   }
-}};
 `;
 
-const Chats = styled(chats)`
-  fill: ${({ isActive }) => {
-  if (isActive) {
-    return "#007AFF";
-  } else {
-    return "#8D8D8F";
-  }
-}};
-`;
-
-
-//Так как хэдер фиксированный нам нужен для него контейнер который будет занимать его пространство
 
 
 //То же что и в Header
