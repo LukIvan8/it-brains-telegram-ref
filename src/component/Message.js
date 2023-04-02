@@ -23,17 +23,14 @@ export default function Message({
 //Message styles
 const StyledMessage = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: end;
   padding: 15px;
-  width: fit-content;
   max-width: 70%;
   align-self: ${(props) => (props.isYou ? "flex-end" : "flex-start")};
   background: ${(props) =>
           props.isYou ? "#E1FEC6" : props.hasBackground ? "#00FF57" : "#fff"};
-
   border-radius: 15px;
-  overflow: clip;
+  overflow: hidden;
 `;
 
 const Time = styled.p`

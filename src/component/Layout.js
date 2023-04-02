@@ -85,18 +85,20 @@ const HeaderContainer = styled.div`
 `;
 
 const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  font-weight: bold;
-  font-size: 10px;
   position: fixed;
-  background-color: #f6f6f6;
-  border-bottom: 1px solid rgba(60, 60, 67, 0.29);
   top: 0;
   left: 0;
   right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 70px;
+  font-weight: bold;
+  font-size: 10px;
+  background-color: #f6f6f6;
+  border-bottom: 1px solid #d7d7d7;
   //Для создания вида мобильного телефона
   max-width: 375px;
   margin: 0 auto;
@@ -108,7 +110,7 @@ const NavbarContainer = styled.div`
 `;
 
 const Navbar = styled.div`
-  //Фиксация на странице
+  //Фиксация снизу страницы
   position: fixed;
   bottom: 0;
   left: 0;
@@ -122,9 +124,8 @@ const Navbar = styled.div`
   //Стили
   height: 110px;
   background-color: #f6f6f6;
-  border-top: 1px solid rgba(60, 60, 67, 0.29);
-
-
+  border-top: 1px solid #d7d7d7;
+  
   //Для создания вида мобильного телефона
   max-width: 375px;
   margin: 0 auto;

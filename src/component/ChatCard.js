@@ -18,11 +18,10 @@ export default function ChatCard({
   isSent,
   isRead,
   isMuted,
-  filtered,
 }) {
   return (
     <StyledLink to="/messenger">
-      <CardContainer filtered={filtered}>
+      <CardContainer>
         <Parted>
           <Image width={60} height={60} src={image} alt="avatar" />
           <TextContainer>
@@ -59,12 +58,10 @@ const StyledLink = styled(Link)`
 `;
 
 const CardContainer = styled.div`
-  display: ${props => props.filtered ? "none" : "flex"};
-  flex-direction: row;
+  display: flex;
   width: 90%;
   margin: 0 auto;
   justify-content: space-between;
-  gap: 15px;
   align-items: start;
   background-color: #fff;
   padding: 15px;
@@ -82,17 +79,20 @@ const Parted = styled.div`
 `;
 
 const Image = styled.img`
+  //makes image round
   border-radius: 50%;
+  //makes image persist aspect ratio
   object-fit: cover;
 `;
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 100%;
+  color: #000;
+  //crops text to fit the container
   white-space: nowrap;
   overflow: hidden;
-  max-width: 100%;
-  color: #000000;
 `;
 
 const Name = styled.p`
@@ -111,6 +111,7 @@ const LastMessage = styled.p`
   color: #8e8e93;
   font-size: 15px;
 `;
+
 const Hashtag = styled.p`
   margin: 0;
   font-weight: 400;
@@ -139,7 +140,8 @@ const NewMessagesCounter = styled.p`
   font-weight: 400;
   color: #fff;
   font-size: 14px;
-  background-color: ${(props) => (props.isMuted ? "#AEAEB2" : "#037ee5")};
+  background-color: ${(props) => (props.isMuted ? "#AEAEB2" : "#037EE5")};
+  //Когда добавят paddingX и paddingY...
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 20px;

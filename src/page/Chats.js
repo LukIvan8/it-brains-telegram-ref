@@ -61,8 +61,8 @@ function search(value, list) {
   }
   value = value.toUpperCase();
   return list.filter((item) => {
-    const txtValue = item["name"];
-    return txtValue.toUpperCase().indexOf(value) > -1;
+    const chatName = item["name"];
+    return chatName.toUpperCase().indexOf(value) > -1;
   });
 }
 
