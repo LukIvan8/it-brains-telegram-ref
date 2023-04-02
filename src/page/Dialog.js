@@ -1,8 +1,9 @@
 // Импорт компонентов
-import Layout from "../component/Layout";
 import MessageList from "../component/MessageList";
-import {useState} from "react";
+import React, {useState} from "react";
 import MessageInput from "../component/MessageInput";
+import Header from "../component/Header";
+import Navbar from "../component/Navbar";
 
 const MESSAGE_LIST = [
   {text: "Hello!", time: "10:00", isYou: false},
@@ -53,13 +54,28 @@ export default function Dialog() {
   const [messages, setMessages] = useState(MESSAGE_LIST);
 
   return (
-    <Layout page="messenger">
+    <React.Fragment>
+      <Header title="Сторінка чату" />
       <MessageList list={messages} />
-      <MessageInput setMessages={setMessages} messages={messages} />
-    </Layout>
+      <MessageInput
+        sendMessage={handleSendMessage}
+        setMessages={setMessages}
+        messages={messages}
+      />
+      <Navbar page="dialog" />
+    </React.Fragment>
   );
 }
 
-
+function handleSendMessage(messages, setMessages, value, setValue) {
+  console.log(value);
+  if (value === "") {
+    return;
+  }
+  let currentMessages = messages.slice();
+  currentMessages.push({ text: value, isYou: true, time: "10:00" });
+  setMessages(currentMessages);
+  setValue("");
+}
 
 

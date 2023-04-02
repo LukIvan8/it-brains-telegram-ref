@@ -3,7 +3,7 @@ import Input from "./Input";
 import send from "../assets/icons/send.svg";
 import styled from "styled-components";
 
-export default function MessageInput({ setMessages, messages }) {
+export default function MessageInput({ setMessages, messages, sendMessage }) {
   const [value, setValue] = useState("");
   return (
     <EmptyDiv>
@@ -15,7 +15,7 @@ export default function MessageInput({ setMessages, messages }) {
         />
         <Image
           onClick={() => {
-            handleSendMessage(messages, setMessages, value, setValue);
+            sendMessage(messages, setMessages, value, setValue);
           }}
           width={32}
           height={32}
@@ -25,17 +25,6 @@ export default function MessageInput({ setMessages, messages }) {
       </InputContainer>
     </EmptyDiv>
   );
-}
-
-function handleSendMessage(messages, setMessages, value, setValue) {
-  console.log(value);
-  if (value === "") {
-    return;
-  }
-  let currentMessages = messages.slice();
-  currentMessages.push({ text: value, isYou: true, time: "10:00" });
-  setMessages(currentMessages);
-  setValue("");
 }
 
 

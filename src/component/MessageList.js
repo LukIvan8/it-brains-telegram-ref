@@ -29,8 +29,6 @@ export default function MessageList({ list }) {
   );
 }
 
-
-
 const EmptyListMessage = styled.p`
   text-align: center;
   font-size: 17px;

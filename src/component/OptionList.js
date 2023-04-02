@@ -13,7 +13,7 @@ export default function OptionList({ settingList }) {
             key={setting.key}
             img={setting.image}
             title={setting.title}
-          ></OptionItem>
+          />
         );
       })}
     </List>

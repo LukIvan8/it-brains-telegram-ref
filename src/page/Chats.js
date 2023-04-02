@@ -1,13 +1,14 @@
 //Импорт библиотек
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 //Импорт компонентов
-import Layout from "../component/Layout";
 import ChatList from "../component/ChatList";
 //Импорт картинок
 import cat from "../assets/image/cat.jpg";
 import pc from "../assets/image/pc.jpg";
 import Input from "../component/Input";
+import Header from "../component/Header";
+import Navbar from "../component/Navbar";
 
 const CHAT_LIST = [
   {
@@ -41,7 +42,8 @@ export default function Chats() {
   }, [searchValue]);
 
   return (
-    <Layout page="chats">
+    <React.Fragment>
+      <Header title="Чати" />
       <EmptyDiv>
         <InputContainer>
           <Input
@@ -52,7 +54,8 @@ export default function Chats() {
         </InputContainer>
       </EmptyDiv>
       <ChatList list={chatList} />
-    </Layout>
+      <Navbar page="chats" />
+    </React.Fragment>
   );
 }
 
