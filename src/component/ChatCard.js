@@ -152,7 +152,6 @@ const NewMessagesCounter = styled.p`
       return "#037ee5";
     }
   }};
-  //Когда добавят paddingX и paddingY...
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 20px;
