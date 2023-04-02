@@ -32,7 +32,7 @@ export default function ChatCard({
   }
 
   return (
-    <StyledLink to="/messenger">
+    <StyledLink to="/dialog">
       <CardContainer>
         <Parted>
           <Image width={60} height={60} src={image} alt="avatar" />

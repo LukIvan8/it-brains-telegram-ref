@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
-const Input = ({value, onChange, placeholder}) => {
+export default function Input({ value, onChange, placeholder }) {
   return (
     <StyledInput value={value} onChange={onChange} placeholder={placeholder} />
   );
-};
+}
 
 const StyledInput = styled.input`
   width: 75%;
@@ -16,4 +16,3 @@ const StyledInput = styled.input`
   font-size: 14px;
 `;
 
-export default Input;

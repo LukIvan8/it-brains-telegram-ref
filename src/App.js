@@ -13,7 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/chats" element={<Chats />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/messenger" element={<Dialog />} />
+          <Route path="/dialog" element={<Dialog />} />
         </Routes>
       </BrowserRouter>
     </AppContainer>

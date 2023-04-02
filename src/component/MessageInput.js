@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Input from "./Input";
 import send from "../assets/icons/send.svg";
 import styled from "styled-components";
@@ -38,6 +38,11 @@ function handleSendMessage(messages, setMessages, value, setValue) {
   setValue("");
 }
 
+
+const Image = styled.img`
+  cursor: pointer;
+`;
+
 const EmptyDiv = styled.div`
   height: 60px;
 `;
@@ -55,8 +60,4 @@ const InputContainer = styled.div`
   bottom: 110px;
   left: 0;
   right: 0;
-`;
-
-const Image = styled.img`
-  cursor: pointer;
 `;
