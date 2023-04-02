@@ -5,18 +5,14 @@ import styled from "styled-components";
 import ChatCard from "./ChatCard";
 
 export default function ChatList({ list }) {
-  return (
-    <React.Fragment>
+  if (!list[0]) return <NoChatsMessage>Список чатів пустий</NoChatsMessage>;
 
-      {!list[0] && <NoChatsMessage>Список чатів пустий</NoChatsMessage>}
-      {list[0] && (
-        <Container>
-          {list.map((chat) => {
-            return <ChatCard {...chat}></ChatCard>;
-          })}
-        </Container>
-      )}
-    </React.Fragment>
+  return (
+    <Container>
+      {list.map((chat) => {
+        return <ChatCard {...chat}></ChatCard>;
+      })}
+    </Container>
   );
 }
 
